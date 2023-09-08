@@ -1,22 +1,50 @@
-#!name=去广告合集
-#!desc=目前只有:中国移动,qq邮箱
+#!name=广告屏蔽
+#!desc=通用广告屏蔽
+#搬运自  https://github.com/ihaoljy/rule/blob/main/Shadowrocket/Block/AdBlock.module
 
 [General]
-force-http-engine-hosts = %APPEND% sdk.alibaba.com.ailbaba.me
-tcp-connection = true
+force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net
+
+[Rule]
+#美团
+URL-REGEX,^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4),REJECT
+
+# 高德地图
+DOMAIN,optimus-ads.amap.com,REJECT
 
 [URL Rewrite]
+#京东屏蔽开屏广告
+^https?:\/\/api\.m\.jd\.com\/client\.action\*functionId=start - reject-dict
+^https?:\/\/api\.m\.jd.com\/client\.action\*functionId=queryMaterialAdverts - reject-dict
+^https?:\/\/api\.m\.jd\.com\/client\.action*functionId=msgEntranceV710 - reject-200
+^https?:\/\/api\.m\.jd\.com\/client\.action*functionId=xview2Config - reject-200
 
-# qq邮箱开屏 rescdn.qqmail.com
-^https:\/\/rescdn\.qqmail\.com\/qqmail\/images\/.+\.(png|jpg)$ - reject
+# 网易云广告->m.ads.8le8le.com,iadmusicmat.music.com
+^https?:\/\/iadmusicmat\.music\.126\.net\/.+\.jpg - reject
+^http:\/\/interface\.music\.163\.com\/eapi\/ad\/config\/get - reject
+^https?:\//m\.ads\.8le8le\.com\/adShow - reject
 
-[Map Local]
-# 中国移动开屏 client.app.coc.10086.cn
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(explorePage\/getAdverList|init\/startInit) data="https://raw.githubusercontent.com/Keywos/rule/main/mocks//reject-200.txt"
+# 高德地图广告
+https:\/\/m5\.amap\.com\/ws\/shield\/nest\/updatable\/v1\/preUpgrade\? - reject
+^http:\/\/ems\.youku\.com\/imp\? - reject
+^http:\/\/optimus-ads\.amap\.com\/uploadimg\/.+ - reject
+^https?:\/\/m5.amap.com\/ws\/valueadded\/ - reject
 
-# 微信公众号底部 mp.weixin.qq.com
-^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad data="https://raw.githubusercontent.com/Keywos/rule/main/mocks//WeChat.json"
+# 携程广告->ma-adx.ctrip.com,m.ctrip.com
+^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
+^https:\/\/m\.ctrip\.com\/restapi\/.+\/json\/tripAds - reject
+
+^https:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
+
+
+# 搬运淘宝(by gitee-木剑)->gw.alicdn.com,heic.alicdn.com
+^https?:\/\/(gw|heic)\.alicdn\.com\/\w{2}s\/.+\.jpg_(9\d{2}|\d{4}) - reject
+^https?:\/\/(gw|heic)\.alicdn\.com\/imgextra\/.+\d{4}-\d{4}\.jpg_(9\d{2}|\d{4}) - reject
+
+[Script]
+# 微信公众号广告屏蔽(By Choler)
+微信公众号广告屏蔽=type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
 
 [MITM]
-h2 = true
-hostname = %APPEND% client.app.coc.10086.cn, list-app-m.i4.cn, search-app-m.i4.cn, mp.weixin.qq.com, webappcfg.paas.cmbchina.com, rescdn.qqmail.com, us.l.qq.com, napi.ithome.com, api.zuihuimai.com, dat.ruanmei.com
+hostname = %APPEND% appconf.mail.163.com,analytics.163.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,bdsp-x.jd.com,dsp-x.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn,act.vip.iqiyi.com,gw.alicdn.com,heic.alicdn.com,apiwz.midukanshu.com,*.iqiyipic.com,*.iqiyi.com,m5.amap.com,flowplus.meituan.net,*.bankcomm.com
