@@ -1,16 +1,4 @@
 # mihomo (Clash Meta) 懒人配置
-# 版本 V1.15-241205
-# https://gist.github.com/liuran001/5ca84f7def53c70b554d3f765ff86a33
-# https://obdo.cc/meta
-# 作者: 笨蛋ovo (bdovo.cc)
-# Telegram: https://t.me/baka_not_baka
-# 关注我的 Telegram 频道谢谢喵 https://t.me/s/BDovo_Channel
-# 修改自官方示例规则 https://wiki.metacubex.one/example/#meta
-# 转载请保留此注释
-# 尽量添加了较为详尽的注释，不理解的地方建议对照 虚空终端 (Clash Meta) Docs 进行理解
-# 虚空终端 (Clash Meta) Docs 地址: https://wiki.metacubex.one
-# 不理解的地方不要乱动，如果你是小白，请按下 `Ctrl + F` 搜索 `基础配置`，只修改此部分
-
 # true 是启用
 # false 是禁用
 
@@ -74,10 +62,10 @@ use: &use
 # 对于订阅来说，path 为选填项，但建议启用
 # 本地配置可以只填 path
 proxy-providers:
-  订阅一:
+  CornSS:
     <<: *p
-    # path: ./proxy_provider/订阅一.yaml
-    url: "https://example.com/airport?type=clashmeta&protocol=shadowsocks&rule=default"
+    path: ./proxy_provider/CornSS.yaml          
+    url: "http://127.0.0.1:38324/download/CornSS?target=ClashMeta"
     # 如需要为该订阅组节点添加前缀，取消下面两行注释
     # override:
       # additional-prefix: "[订阅一]"
