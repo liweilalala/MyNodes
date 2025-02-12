@@ -1,0 +1,21 @@
+#!name=携程去广告
+#!tag=APP Adblock
+#!originalUrl=https://github.com/zirawell/Ad-Cleaner/blob/main/Adblock/App/X/%E6%90%BA%E7%A8%8B%E6%97%85%E8%A1%8C/filter/ctrip.list
+
+[Rule]
+# > 携程
+DOMAIN,sofire.baidu.com,REJECT
+
+[URL Rewrite]
+# ⚠️域名[m.ctrip.com]可能存在无法MITM，请在需要使用时关闭MITM
+^https?:\/\/m\.ctrip\.com\/restapi\/.*\/getTimeZoneServerIpList - reject
+^https?:\/\/m\.ctrip\.com\/restapi\/.*\/tripAds - reject
+^https?:\/\/m\.ctrip\.com\/restapi\/.*\/getAppConfig - reject
+^https?:\/\/m\.ctrip\.com\/restapi\/.*\/incrQueryTrans - reject
+^https?:\/\/m\.ctrip\.com\/restapi\/.*\/getDiscardUbts - reject
+^https?:\/\/m\.ctrip\.com\/html5\/webresource\/js\/iscroll\.js$ - reject
+^https?:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
+^https?:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
+
+[MITM]
+hostname = %APPEND% m.ctrip.com, ma-adx.ctrip.com, mbd.baidu.com
