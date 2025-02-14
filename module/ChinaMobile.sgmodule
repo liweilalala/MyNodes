@@ -1,0 +1,10 @@
+#!name=中国移动app去开屏广告
+#!desc=中国移动app去开屏广告
+
+[URL Rewrite]
+^https?:\/\/res\.app\.coc\.10086\.cn\/qwhdcdn_cmcc-cs_cn\/prd-mgcenter\/[a-fA-F0-9]+\.jpg\?width=\d+&height=\d+&fmt=[a-zA-Z]+ - reject
+
+^https?:\/\/res\.app\.coc\.10086\.cn\/qwhdcdn_cmcc-cs_cn\/prd-mgcenter\/[a-fA-F0-9]+\.jpg\?(?:width=\d+&height=\d+&)?fmt=[a-zA-Z]+ - reject
+
+[MITM]
+hostname = %APPEND% res.app.coc.10086.cn
