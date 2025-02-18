@@ -1,0 +1,15 @@
+name: |-
+  中国移动app去开屏广告
+desc: |-
+  local
+icon: |-
+  https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1019.png
+
+http:
+
+  mitm:
+    - "res.app.coc.10086.cn"
+
+  url-rewrite:
+    - >-
+      ^https?:\/\/res\.app\.coc\.10086\.cn\/qwhdcdn_cmcc-cs_cn\/prd-mgcenter\/[a-fA-F0-9]+\.jpg\?width=\d+&height=\d+&fmt=[a-zA-Z]+ - reject
